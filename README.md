@@ -253,16 +253,11 @@ npm run build
 * RAG-based assistant
 ## Product Features
 * USER / ADMIN role-based access
-* Activity/audit logs
-* Monitoring dashboard
-* Advanced analytics
-* File attachments
 * Email notifications
 * Mobile optimization
 ## Infrastructure
-* ECS/Fargate deployment
-* Terraform infrastructure
-* Kubernetes deployment
+* Using Terraform in the CI/CD
+* Kubernetes deployment (locally)
 * Observability stack
 * Redis caching
 # Screenshots
