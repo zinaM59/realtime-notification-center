@@ -1,0 +1,32 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches: [dev]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: |
+          docker build --build-arg DATABASE_URL=$DATABASE_URL -t zina662/realtime-notifications-center:v1 .
+
+      - name: Copy files to EC2
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ~
+            git clone https://github.com/YOUR_USER/YOUR_REPO.git || true
+            cd YOUR_REPO
+            git pull
+            docker build -t my-app .
+            docker stop my-app || true
+            docker rm my-app || true
+            docker run -d -p 80:3000 --name my-app my-app

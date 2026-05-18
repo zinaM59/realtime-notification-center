@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --color-app-bg: #0f172a;
+  --color-app-surface: #111827;
+  --color-app-surface-2: #1f2937;
+  --color-app-border: #334155;
+
+  --color-app-text: #f8fafc;
+  --color-app-muted: #94a3b8;
+  --color-app-dim: #64748b;
+
+  --color-app-primary: #2563eb;
+  --color-app-primary-hover: #1d4ed8;
+
+  --color-app-success: #22c55e;
+  --color-app-warning: #f59e0b;
+  --color-app-danger: #ef4444;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--color-app-bg);
+  color: var(--color-app-text);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
