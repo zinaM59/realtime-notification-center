@@ -52,4 +52,15 @@ next-env.d.ts
 /app/components/tasks/TaskList-first variant.tsx
 /app/pwa/clients/web.tsx
 /app/pwa/actions.ts
-
+/app/components/__unit_tests__
+/app/components/_unit_tests_
+/draft-workflow
+/draft-workflow/deploy_to_aws copy.yml
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+/.github/workflows/playwright.yml

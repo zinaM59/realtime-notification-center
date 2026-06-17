@@ -9,8 +9,6 @@ export default async function Home() {
     <>
       <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
         <main className="min-h-screen bg-slate-950 text-white w-screen">
-          {/* <PushNotificationManager />
-          <InstallPrompt /> */}
           <section className="mx-auto max-w-7xl px-6 py-20">
             <div className="mx-auto max-w-3xl text-center">
               <p className="mb-4 inline-flex rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1 text-sm text-blue-300">
