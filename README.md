@@ -30,9 +30,9 @@ A modern full-stack realtime notification and task management platform built wit
 * PostgreSQL database
 * Production-ready environment variable management
 ## Testing & Quality
-- Planned unit, component, API, and E2E tests
+- unit component and E2E tests
 - CI validation with GitHub Actions
-- Test coverage for auth, tasks, notifications, and AI workflows
+- Test coverage for auth, tasks, notifications
 # Technology Stack
 ## Frontend
 * Next.js (App Router)
@@ -102,6 +102,10 @@ Create .env:
     NEXT_PUBLIC_VAPID_PUBLIC_KEY=
     VAPID_PRIVATE_KEY=
     VAPID_SUBJECT=
+    AUTH_GOOGLE_ID=
+    AUTH_GOOGLE_SECRET=
+    AUTH_GITHUB_ID=
+    AUTH_GITHUB_SECRET=
 ```
 # Local Development
 ## Install dependencies
