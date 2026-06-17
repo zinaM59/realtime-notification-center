@@ -126,7 +126,7 @@ Application:
 ## Run container
 `docker run --env-file .env -p 3000:3000 realtime-notification-center`
 # AWS Deployment
-The project is designed for deployment on AWS EC2. **In this repository, environment variables and AWS configuration details are not stored!!!**
+The project is designed for deployment on AWS EC2. **In this repository, environment variables and AWS configuration details are missing!!!**
 ## Deployment Stack
 * AWS EC2
 * Docker
