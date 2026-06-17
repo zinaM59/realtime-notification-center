@@ -200,31 +200,8 @@ AWS EC2 update
 ## Planned Automated Testing
 The next planned improvement is adding automated testing before deployment.
 Planned testing stack:
-
-* Unit tests
 * API tests
-* Component tests
-* E2E tests (Playwright / Cypress)
-Planned validation flow:
-```
-Push to GitHub
-    ↓
-Install dependencies
-    ↓
-Run lint
-    ↓
-Run automated tests
-    ↓
-Build Docker image
-    ↓
-Deploy to AWS
-```
-Example commands:
-```
-npm run lint
-npm run test
-npm run build
-```
+
 ## Planned Test Coverage
 ### Authentication
 * Protected routes
