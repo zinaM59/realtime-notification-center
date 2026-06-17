@@ -66,8 +66,8 @@ export async function PATCH(req: Request, context: { params: Promise<{ taskId: s
   emitToUser(existing.createdById, "notification:new", {
     ...notification,
     createdAt: notification.createdAt.toISOString()
-  }, subscriptions, userName ?? "");
-  // emitToUser(existing.createdById, "task:updated", updated, null, '');
+  }, subscriptions.map(sub => ({ ...sub, userName })), userName ?? "");
+
 
   return NextResponse.json([updated, subscriptions]);
 }
@@ -125,8 +125,8 @@ export async function DELETE(req: Request, context: { params: Promise<{ taskId: 
   emitToUser(existing.createdById, "notification:new", {
     ...notification,
     createdAt: notification.createdAt.toISOString()
-  }, subscriptions, userName ?? "");
-  // emitToUser(existing.createdById, "task:deleted", updated, null);
+  }, subscriptions.map(sub => ({ ...sub, userName })), userName ?? "");
+
 
   return NextResponse.json([updated, subscriptions]);
 }

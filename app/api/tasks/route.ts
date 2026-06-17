@@ -54,7 +54,6 @@ export async function POST(req: Request) {
             userId: assignedToId,
             title: "New Task Assigned",
             message: task.title,
-            // message: `You were assigned: ${task.title}`,
             type: "TASK_ASSIGNED",
             taskId: task.id
         }
@@ -71,7 +70,8 @@ export async function POST(req: Request) {
     emitToUser(parsed.data.assignedToId, "notification:new", {
         ...notification,
         createdAt: notification.createdAt.toISOString()
-    }, subscriptions, userName ?? "");
+    }, subscriptions.map(sub => ({ ...sub, userName })), userName ?? "");
+
     emitToUser(parsed.data.assignedToId, "task:new", task, null);
 
     return NextResponse.json({ subscriptions, name: assignee.name });

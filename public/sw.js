@@ -101,6 +101,7 @@ self.addEventListener('push', function (event) {
         badge: 'icons/android-chrome-192x192.png',
         data: {
             url: data.url || '/',
+            type: data.type || "GENERAL",
         },
         requireInteraction: true
     };
@@ -115,21 +116,31 @@ self.addEventListener('notificationclick', (event) => {
     event.notification.close();
 
     const targetUrl = event.notification?.data?.url || '/';
-
+    const fullUrl = new URL(targetUrl, self.location.origin).href;
     event.waitUntil(
-        self.clients.matchAll({ type: 'window', includeUncontrolled: true })
-            .then((clientList) => {
-                for (const client of clientList) {
-                    // same app already open -> focus it
-                    if ('focus' in client) {
-                        return client.focus();
-                    }
-                }
+        (async () => {
+            if (event.notification.data?.type === "APP_VERSION_UPDATED") {
+                const keys = await caches.keys();
+                await Promise.all(keys.map((key) => caches.delete(key)));
+                await self.registration.update();
+            }
 
-                // no window open -> open a new one
-                if (self.clients.openWindow) {
-                    return self.clients.openWindow(targetUrl);
+            const clientList = await clients.matchAll({
+                type: "window",
+                includeUncontrolled: true,
+            });
+
+            for (const client of clientList) {
+                if ("focus" in client) {
+                    await client.navigate(fullUrl);
+                    return client.focus();
                 }
-            })
+            }
+
+            if (self.clients.openWindow) {
+                return self.clients.openWindow(targetUrl);
+            }
+        })()
     );
+
 });

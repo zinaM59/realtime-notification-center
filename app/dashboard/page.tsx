@@ -75,10 +75,10 @@ export default async function DashboardPage() {
                         <p className="mt-2 text-slate-400">
                             Welcome back {session?.user.name ?? session?.user.email}. Here is your task and notification overview.
                         </p>
-                        {(!isBrowserSupported[0].res) ?
+                        {/* {(!isBrowserSupported[0].res) ?
                             <p className="mt-2 text-amber-300">Push notifications are not supported in this browser or are currently disabled. You can still receive new tasks and notifications while using the app, but push alerts may not be available.
                             </p>
-                            : null}
+                            : null} */}
 
                     </div>
 

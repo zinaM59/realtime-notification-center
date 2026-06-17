@@ -64,6 +64,7 @@ export default function HeaderDashboardItems() {
                         <NavLinkText href="/dashboard">Dashboard</NavLinkText>
                         <NavLinkText href="/tasks">Tasks</NavLinkText>
                         <NavLinkText href="/notifications">Notifications</NavLinkText>
+                        <NavLinkText href="/about">About</NavLinkText>
                     </nav>
 
                     {isMobile && menuOpen ? (

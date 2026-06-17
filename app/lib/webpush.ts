@@ -1,7 +1,7 @@
 
 'use server'
 import { prisma } from "@/app/lib/prisma";
-const webpush = require('web-push')
+import webpush from 'web-push';
 let vapidConfigured = false;
 
 function ensureVapidConfigured() {
@@ -73,20 +73,29 @@ export async function sendPushToUser(
         endpoint: string;
         p256dh: string;
         auth: string;
-    }[], message: string
+        userName?: string;
+    }[], payload: { title?: string; message: string; type?: string }
 
 ) {
 
     ensureVapidConfigured();
-    const payload = JSON.stringify({
-        title: 'Notification Center',
-        body: message,
-        icon: '/icons/favicon-32x32.png',
-        url: '/',
-    });
 
     const results = await Promise.allSettled(
-        subscriptions.map((sub) => sendNotificationWithRetry(sub, payload))
+        subscriptions.map((sub) =>
+
+            sendNotificationWithRetry(
+                { endpoint: sub.endpoint, p256dh: sub.p256dh, auth: sub.auth },
+
+                JSON.stringify({
+                    title: payload.title || 'Notification Center',
+                    body: `${sub.userName}: ${payload.message}`,
+                    icon: '/icons/favicon-32x32.png',
+                    url: '/',
+                    type: payload.type || "GENERAL_NOTIFICATION",
+                })
+
+            )
+        )
     );
 
     for (const [index, result] of results.entries()) {

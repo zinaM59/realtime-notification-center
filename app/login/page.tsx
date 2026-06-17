@@ -33,8 +33,9 @@ export default function LoginPage() {
 
                 <form action={loginAction} className="space-y-4">
                     <div>
-                        <label className="mb-2 block text-sm text-slate-300">Email</label>
+                        <label htmlFor="email" className="mb-2 block text-sm text-slate-300">Email</label>
                         <input
+                            id="email"
                             name="email"
                             type="email"
                             className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none focus:border-blue-500"
@@ -44,10 +45,11 @@ export default function LoginPage() {
                     </div>
 
                     <div>
-                        <label className="mb-2 block text-sm text-slate-300">
+                        <label htmlFor="password" className="mb-2 block text-sm text-slate-300">
                             Password
                         </label>
                         <input
+                            id="password"
                             name="password"
                             type="password"
                             className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-white outline-none focus:border-blue-500"

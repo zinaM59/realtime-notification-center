@@ -7,7 +7,7 @@ export async function emitToUser(userId: string, event: string, payload: unknown
     if (!io) return;
     io.to(`user:${userId}`).emit(event, payload);
     if (!subscriptions || subscriptions.length === 0) { return; }
-    await sendPushToUser(subscriptions, `${userName}. You have a new message: ${(payload as any).message}`);
+    await sendPushToUser(subscriptions, { message: `You have a new message: ${(payload as any).message}` });
 }
 
 let socket: Socket | null = null;

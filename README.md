@@ -227,18 +227,13 @@ npm run build
 ```
 ## Planned Test Coverage
 ### Authentication
-* User registration
-* User login/logout
 * Protected routes
 * Role-based access control
 ### Tasks
 * Create/update/delete task
-* Real-time task synchronization
 * Task validation
 ### Notifications
 * Admin notification delivery
-* Push notification workflow
-* Socket.IO realtime events
 ### AI Assistant
 * Structured AI responses
 * AI task generation
@@ -258,6 +253,16 @@ npm run build
 ## Infrastructure
 * Using Terraform in the CI/CD
 * Kubernetes deployment (locally)
+* Activity/audit logs
+* Monitoring dashboard
+* Advanced analytics
+* File attachments
+* Email notifications
+* Mobile optimization
+## Infrastructure
+* ECS/Fargate deployment
+* Terraform infrastructure
+* Kubernetes deployment
 * Observability stack
 * Redis caching
 # Screenshots
